@@ -2,9 +2,7 @@ package org.example;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class WordCountTest {
+public class TaskATest {
 
     @Test
     public void debug() throws Exception {
@@ -21,7 +19,7 @@ public class WordCountTest {
         input[1] = "file:///Users/alexli/CS4433/HW 1/HW1/src/friends.csv";
         input[2] = "file:///Users/alexli/CS4433/HW 1/HW1/src/pages.csv";
 
-        WordCount wc = new WordCount();
+        TaskA wc = new TaskA();
         wc.debug(input);
     }
 }
