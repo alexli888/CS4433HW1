@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class TaskA {
+public class TaskA_Optimized {
 
     // Mapper: parse CSV, skip header, filter Nationality == "Italy", emit Name -> Hobby
     public static class TokenizerMapper
@@ -65,8 +65,8 @@ public class TaskA {
 
     public static void main(String[] args) throws Exception {
         String defaultInput = "src/data/pages.csv";
-        // changed to a unique original job output path
-        String defaultOutput = "target/taskA-original-output";
+        // changed to a unique optimized output path
+        String defaultOutput = "target/taskA-optimized-output";
 
         String inputPath;
         String outputPath;
@@ -88,8 +88,10 @@ public class TaskA {
 
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "filter by nationality");
-        job.setJarByClass(TaskA.class);
+        job.setJarByClass(TaskA_Optimized.class);
         job.setMapperClass(TokenizerMapper.class);
+        // set combiner to the reducer to enable local aggregation / pass-through
+        job.setCombinerClass(NameHobbyReducer.class);
         job.setReducerClass(NameHobbyReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
