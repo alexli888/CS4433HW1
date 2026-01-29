@@ -12,15 +12,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-/*
- TaskE: For each person (ByWho) compute:
-   - total accesses (count of log lines for that person)
-   - distinct pages accessed (unique WhatPage values)
-
- Input format (AccessLog): AccessId,ByWho,WhatPage,TypeOfAccess,AccessTime
- The mapper emits: key = ByWho, value = WhatPage
- The reducer counts total values and unique pages using a HashSet.
-*/
 public class TaskE {
 
     public static class CountryAccessMapper extends Mapper<Object, Text, Text, Text> {
@@ -36,7 +27,7 @@ public class TaskE {
             String[] parts = line.split(",", 5);
             if (parts.length < 3) return;
 
-            // Robustly skip header or malformed lines: ensure AccessId is numeric
+            // skip header or malformed lines: ensure AccessId is numeric
             String accessIdStr = parts[0].trim();
             try {
                 Integer.parseInt(accessIdStr);
