@@ -113,7 +113,7 @@ public class TaskD_Optimized {
         Job job = Job.getInstance(conf, "Task D Optimized");
         job.setJarByClass(TaskD_Optimized.class);
         job.setMapperClass(JoinMapper.class);
-        //using hte combiner now
+        //using the combiner now
         job.setCombinerClass(FriendCombiner.class);
         job.setReducerClass(JoinReducer.class);
         job.setOutputKeyClass(Text.class);
