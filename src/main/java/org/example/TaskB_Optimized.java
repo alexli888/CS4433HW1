@@ -106,7 +106,7 @@ public class TaskB_Optimized {
         } else if (args.length == 1) {
             inputPath = args[0];
             outputPath = defaultOutput;
-            System.err.println("Using default pathjs:" + outputPath);
+            System.err.println("Using default paths:" + outputPath);
         } else {
             inputPath = defaultInput;
             outputPath = defaultOutput;
@@ -134,7 +134,7 @@ public class TaskB_Optimized {
         job.setMapOutputValueClass(IntWritable.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
-        // cache the file for the joion
+        // cache the file for the join
         job.addCacheFile(new URI("hdfs://localhost:9000/user/mahit/project1/pages.csv#pages.csv"));
         job.setNumReduceTasks(1);
 

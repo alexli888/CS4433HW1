@@ -87,7 +87,7 @@ public class TaskD {
             outputPath = args[2];
         } else if (args.length == 1) {
             outputPath = args[0];
-            System.err.println("Using default pathjs:" + outputPath);
+            System.err.println("Using default paths:" + outputPath);
         } else {
             outputPath = defaultOutput;
             System.err.println("Using default paths:");

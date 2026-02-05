@@ -95,7 +95,7 @@ public class TaskB {
         } else if (args.length == 1) {
             inputPath = args[0];
             outputPath = defaultOutput;
-            System.err.println("Using default pathjs:" + outputPath);
+            System.err.println("Using default paths:" + outputPath);
         } else {
             inputPath = defaultInput;
             outputPath = defaultOutput;
